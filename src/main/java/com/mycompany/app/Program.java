@@ -1,14 +1,20 @@
-// Реализация игры "Крестики-нолики" (3x3)
-// Минимаксный алгоритм
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+package com.mycompany.app;
+
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.io.IOException;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 enum State { PLAYING, OWIN, XWIN, DRAW };
 

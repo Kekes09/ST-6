@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="com.mycompany.app.ProgramTests" time="0.24" tests="28" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1251"/>
+    <property name="sun.awt.enableExtraMouseButtons" value="true"/>
+    <property name="java.class.path" value="C:\Users\Evgenii\Desktop\dasdas\ST-6\target\test-classes;C:\Users\Evgenii\Desktop\dasdas\ST-6\target\classes;C:\Users\Evgenii\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0\junit-jupiter-api-5.11.0.jar;C:\Users\Evgenii\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Evgenii\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0\junit-platform-commons-1.11.0.jar;C:\Users\Evgenii\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Evgenii\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0\junit-jupiter-params-5.11.0.jar;C:\Users\Evgenii\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.0\junit-jupiter-engine-5.11.0.jar;C:\Users\Evgenii\.m2\repository\org\junit\platform\junit-platform-engine\1.11.0\junit-platform-engine-1.11.0.jar;"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="Europe/Moscow"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="RU"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin"/>
+    <property name="sun.java.command" value="C:\Users\Evgenii\AppData\Local\Temp\surefire2133368451349260669\surefirebooter-20260607193430294_3.jar C:\Users\Evgenii\AppData\Local\Temp\surefire2133368451349260669 2026-06-07T19-34-30_206-jvmRun1 surefire-20260607193430294_1tmp surefire_0-20260607193430294_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\Evgenii\Desktop\dasdas\ST-6\target\test-classes;C:\Users\Evgenii\Desktop\dasdas\ST-6\target\classes;C:\Users\Evgenii\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0\junit-jupiter-api-5.11.0.jar;C:\Users\Evgenii\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Evgenii\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0\junit-platform-commons-1.11.0.jar;C:\Users\Evgenii\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Evgenii\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0\junit-jupiter-params-5.11.0.jar;C:\Users\Evgenii\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.0\junit-jupiter-engine-5.11.0.jar;C:\Users\Evgenii\.m2\repository\org\junit\platform\junit-platform-engine\1.11.0\junit-platform-engine-1.11.0.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Evgenii"/>
+    <property name="user.language" value="ru"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-10-21"/>
+    <property name="java.home" value="C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\Evgenii\Desktop\dasdas\ST-6"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\Evgenii\AppData\Local\Temp\surefire2133368451349260669\surefirebooter-20260607193430294_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="25.0.1+8-LTS"/>
+    <property name="user.name" value="Evgenii"/>
+    <property name="stdout.encoding" value="Cp1251"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-25.0.1+8"/>
+    <property name="localRepository" value="C:\Users\Evgenii\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="C:\Users\Evgenii\AppData\Local\Temp\"/>
+    <property name="java.version" value="25.0.1"/>
+    <property name="user.dir" value="C:\Users\Evgenii\Desktop\dasdas\ST-6"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1251"/>
+    <property name="java.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin;C:\Users\Evgenii\gcc\bin;C:\Users\Evgenii\gcc\libexec\gcc\x86_64-w64-mingw32\13.2.0;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\CMake\bin;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Microsoft SDKs\MPI\;C:\Program Files\LLVM\bin;C:\Program Files (x86)\LLVM\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Tesseract-OCR;C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.15\bin;C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin;C:\Users\Evgenii\gcc\bin;C:\Users\Evgenii\gcc\libexec\gcc\x86_64-w64-mingw32\13.2.0;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\CMake\bin;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Microsoft SDKs\MPI\;C:\Program Files\LLVM\bin;C:\Program Files (x86)\LLVM\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Tesseract-OCR;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Users\Evgenii\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\bin;C:\Users\Evgenii\.dotnet\tools;C:\Users\Evgenii\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\Evgenii\AppData\Local\Programs\Microsoft VS Code\bin;C:\Python27;C:\Users\Evgenii\.dotnet\tools;C:\Users\Evgenii\AppData\Local\Microsoft\WindowsApps;C:\ProgramData\Evgenii\GitHubDesktop\bin;C:\Users\Evgenii\AppData\Local\GitHubDesktop\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2025.1.7\bin;;C:\Program Files\JetBrains\PyCharm 2025.3.2.1\bin;C:\Users\Evgenii\Tools\maven\bin;C:\Users\Evgenii\Tools\maven\bin;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1251"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="25.0.1+8-LTS"/>
+    <property name="stdin.encoding" value="Cp1251"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="testUtilitaPechatInt" classname="com.mycompany.app.ProgramTests" time="0.02">
+    <system-out><![CDATA[
+1-2-3-4-5-6-7-8-9-
+]]></system-out>
+  </testcase>
+  <testcase name="testEnumValues" classname="com.mycompany.app.ProgramTests" time="0.004"/>
+  <testcase name="testProverkaGorizontalX" classname="com.mycompany.app.ProgramTests" time="0.002"/>
+  <testcase name="testUtilitaPechatChar" classname="com.mycompany.app.ProgramTests" time="0.001">
+    <system-out><![CDATA[
+X-O-X-O-X-O-X-O-X-
+]]></system-out>
+  </testcase>
+  <testcase name="testUtilitaPechatList" classname="com.mycompany.app.ProgramTests" time="0.002">
+    <system-out><![CDATA[
+0-4-8-
+]]></system-out>
+  </testcase>
+  <testcase name="testYacheykaSetMarker" classname="com.mycompany.app.ProgramTests" time="0.054"/>
+  <testcase name="testSozdanieIgroka" classname="com.mycompany.app.ProgramTests" time="0.002"/>
+  <testcase name="testMiniMaxPochtiPolnaya" classname="com.mycompany.app.ProgramTests" time="0.002">
+    <system-out><![CDATA[
+minimax:   9(0) 
+minimax best:   9(0) Steps counted: 0]]></system-out>
+  </testcase>
+  <testcase name="testInitsializatsiyaDoski" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+  <testcase name="testProverkaVertikalO" classname="com.mycompany.app.ProgramTests" time="0.0"/>
+  <testcase name="testMaxMovePobeda" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+  <testcase name="testGeneratsiyaKhodovPolnaya" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+  <testcase name="testYacheykaSozdanie" classname="com.mycompany.app.ProgramTests" time="0.0"/>
+  <testcase name="testGeneratsiyaKhodovPustaya" classname="com.mycompany.app.ProgramTests" time="0.0"/>
+  <testcase name="testProverkaDiagonal" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+  <testcase name="testVyigryshnyeKombinatsii(int, int, int)[1]" classname="com.mycompany.app.ProgramTests" time="0.029"/>
+  <testcase name="testVyigryshnyeKombinatsii(int, int, int)[2]" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+  <testcase name="testVyigryshnyeKombinatsii(int, int, int)[3]" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+  <testcase name="testVyigryshnyeKombinatsii(int, int, int)[4]" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+  <testcase name="testPanelSozdaetYacheyki" classname="com.mycompany.app.ProgramTests" time="0.005"/>
+  <testcase name="testProverkaIgraet" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+  <testcase name="testProverkaNichya" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+  <testcase name="testOtsenkaNeZavershena" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+  <testcase name="testMinMovePobeda" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+  <testcase name="testOtsenkaXVyigralDlyaO" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+  <testcase name="testOtsenkaXVyigralDlyaX" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+  <testcase name="testOtsenkaNichya" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+  <testcase name="testKonstantaINF" classname="com.mycompany.app.ProgramTests" time="0.001"/>
+</testsuite>
