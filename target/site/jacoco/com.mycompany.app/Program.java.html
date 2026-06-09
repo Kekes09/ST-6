@@ -53,7 +53,7 @@ class Game {
     {
       //char symbol=game.symbol;//cplayer.symbol;
 <span class="fc" id="L55">      State state=State.PLAYING;</span>
-<span class="pc bpc" id="L56" title="15 of 48 branches missed.">      if ((board[0] == symbol &amp;&amp; board[1] == symbol &amp;&amp; board[2] == symbol) ||</span>
+<span class="fc bfc" id="L56" title="All 48 branches covered.">      if ((board[0] == symbol &amp;&amp; board[1] == symbol &amp;&amp; board[2] == symbol) ||</span>
           (board[3] == symbol &amp;&amp; board[4] == symbol &amp;&amp; board[5] == symbol) ||
           (board[6] == symbol &amp;&amp; board[7] == symbol &amp;&amp; board[8] == symbol) ||
           (board[0] == symbol &amp;&amp; board[3] == symbol &amp;&amp; board[6] == symbol) ||
@@ -92,9 +92,9 @@ class Game {
 <span class="fc" id="L92">    State state=checkState(board);</span>
 <span class="fc bfc" id="L93" title="All 6 branches covered.">    if ((state == State.XWIN || state == State.OWIN || state == State.DRAW)) </span>
     {
-<span class="pc bpc" id="L95" title="1 of 8 branches missed.">        if ((state == State.XWIN &amp;&amp; player.symbol == 'X') || (state == State.OWIN &amp;&amp; player.symbol == 'O')) </span>
+<span class="fc bfc" id="L95" title="All 8 branches covered.">        if ((state == State.XWIN &amp;&amp; player.symbol == 'X') || (state == State.OWIN &amp;&amp; player.symbol == 'O')) </span>
 <span class="fc" id="L96">            return +Game.INF;</span>
-<span class="pc bpc" id="L97" title="4 of 8 branches missed.">        else if ((state == State.XWIN &amp;&amp; player.symbol == 'O') || (state == State.OWIN &amp;&amp; player.symbol == 'X')) </span>
+<span class="pc bpc" id="L97" title="2 of 8 branches missed.">        else if ((state == State.XWIN &amp;&amp; player.symbol == 'O') || (state == State.OWIN &amp;&amp; player.symbol == 'X')) </span>
 <span class="fc" id="L98">            return -Game.INF;</span>
 <span class="pc bpc" id="L99" title="1 of 2 branches missed.">        else if (state == State.DRAW) </span>
 <span class="fc" id="L100">            return 0;</span>
@@ -153,7 +153,7 @@ class Game {
 <span class="fc" id="L153">    generateMoves(board, move_list); </span>
 
 <span class="fc bfc" id="L155" title="All 2 branches covered.">    while (move_list.size()!=0) { </span>
-<span class="pc bpc" id="L156" title="1 of 2 branches missed.">        symbol= (player.symbol == 'X') ? 'O' : 'X'; </span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">        symbol= (player.symbol == 'X') ? 'O' : 'X'; </span>
 <span class="fc" id="L157">        board[move_list.get(0)] = symbol; </span>
 
 <span class="fc" id="L159">        int val = MaxMove(board, player); </span>
@@ -169,23 +169,23 @@ class Game {
 
   int MaxMove(char[] board, Player player) {
 <span class="fc" id="L171">    int pos_value = evaluatePosition(board, player);</span>
-<span class="pc bpc" id="L172" title="1 of 2 branches missed.">    if (pos_value != -1) </span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">    if (pos_value != -1) </span>
 <span class="fc" id="L173">      return pos_value;</span>
-<span class="nc" id="L174">    q++;</span>
-<span class="nc" id="L175">    int best_val = -Game.INF;</span>
-<span class="nc" id="L176">    ArrayList&lt;Integer&gt; move_list=new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L177">    generateMoves(board, move_list);</span>
-<span class="nc bnc" id="L178" title="All 2 branches missed.">    while (move_list.size()!=0) {</span>
-<span class="nc bnc" id="L179" title="All 2 branches missed.">        symbol=(player.symbol == 'X') ? 'X' : 'O'; </span>
-<span class="nc" id="L180">        board[move_list.get(0)] = symbol;</span>
-<span class="nc" id="L181">        int val = MinMove(board, player);</span>
-<span class="nc bnc" id="L182" title="All 2 branches missed.">        if (val &gt; best_val) {</span>
-<span class="nc" id="L183">            best_val = val;</span>
+<span class="fc" id="L174">    q++;</span>
+<span class="fc" id="L175">    int best_val = -Game.INF;</span>
+<span class="fc" id="L176">    ArrayList&lt;Integer&gt; move_list=new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L177">    generateMoves(board, move_list);</span>
+<span class="fc bfc" id="L178" title="All 2 branches covered.">    while (move_list.size()!=0) {</span>
+<span class="fc bfc" id="L179" title="All 2 branches covered.">        symbol=(player.symbol == 'X') ? 'X' : 'O'; </span>
+<span class="fc" id="L180">        board[move_list.get(0)] = symbol;</span>
+<span class="fc" id="L181">        int val = MinMove(board, player);</span>
+<span class="fc bfc" id="L182" title="All 2 branches covered.">        if (val &gt; best_val) {</span>
+<span class="fc" id="L183">            best_val = val;</span>
         }
-<span class="nc" id="L185">        board[move_list.get(0)] = ' ';</span>
-<span class="nc" id="L186">        move_list.remove(0);</span>
-<span class="nc" id="L187">    }</span>
-<span class="nc" id="L188">    return best_val;</span>
+<span class="fc" id="L185">        board[move_list.get(0)] = ' ';</span>
+<span class="fc" id="L186">        move_list.remove(0);</span>
+<span class="fc" id="L187">    }</span>
+<span class="fc" id="L188">    return best_val;</span>
   }
 }
 

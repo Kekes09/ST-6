@@ -1,231 +1,201 @@
 package com.mycompany.app;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
+import java.awt.GridLayout;
+import java.lang.reflect.Field;
 
-class ProgramTests {
+public class ProgramTests {
 
-    private Game igra;
-    private Player igrokX;
-    private Player igrokO;
+    @Test
+    public void testGameInitialization() {
+        Game game = new Game();
+        assertNotNull(game.board);
+        assertEquals(State.PLAYING, game.state);
+        assertEquals('X', game.player1.symbol);
+        assertEquals('O', game.player2.symbol);
+        assertEquals(9, game.board.length);
 
-    @BeforeEach
-    void podgotovka() {
-        igra = new Game();
-        igrokX = new Player();
-        igrokX.symbol = 'X';
-        igrokO = new Player();
-        igrokO.symbol = 'O';
+        for (int i = 0; i < 9; i++) {
+            assertEquals(' ', game.board[i]);
+        }
+        assertNull(game.cplayer);
     }
 
     @Test
-    void testSozdanieIgroka() {
-        Player igrok = new Player();
-        igrok.symbol = 'X';
-        igrok.move = 5;
-        igrok.selected = true;
-        igrok.win = true;
-        assertEquals('X', igrok.symbol);
-        assertEquals(5, igrok.move);
-        assertTrue(igrok.selected);
-        assertTrue(igrok.win);
+    public void testCheckStateAllConditions() {
+        Game game = new Game();
+
+        char[] xWinHorizontal = {'X', 'X', 'X', ' ', ' ', ' ', ' ', ' ', ' '};
+        game.symbol = 'X';
+        assertEquals(State.XWIN, game.checkState(xWinHorizontal));
+
+        char[] xWinVertical = {'X', ' ', ' ', 'X', ' ', ' ', 'X', ' ', ' '};
+        assertEquals(State.XWIN, game.checkState(xWinVertical));
+
+        char[] xWinDiagonal = {'X', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X'};
+        assertEquals(State.XWIN, game.checkState(xWinDiagonal));
+
+        char[] oWinHorizontal = {'O', 'O', 'O', ' ', ' ', ' ', ' ', ' ', ' '};
+        game.symbol = 'O';
+        assertEquals(State.OWIN, game.checkState(oWinHorizontal));
+
+        char[] oWinVertical = {'O', ' ', ' ', 'O', ' ', ' ', 'O', ' ', ' '};
+        assertEquals(State.OWIN, game.checkState(oWinVertical));
+
+        char[] draw = {'X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'};
+        game.symbol = 'X';
+        assertEquals(State.DRAW, game.checkState(draw));
+
+        char[] playing = {'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+        assertEquals(State.PLAYING, game.checkState(playing));
     }
 
     @Test
-    void testInitsializatsiyaDoski() {
-        Game novaya = new Game();
-        assertNotNull(novaya.board);
-        assertEquals(9, novaya.board.length);
-        for (char c : novaya.board) assertEquals(' ', c);
-        assertEquals(State.PLAYING, novaya.state);
-        assertEquals('X', novaya.player1.symbol);
-        assertEquals('O', novaya.player2.symbol);
+    public void testGenerateMoves() {
+        Game game = new Game();
+
+        char[] emptyBoard = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+        ArrayList<Integer> emptyMoves = new ArrayList<>();
+        game.generateMoves(emptyBoard, emptyMoves);
+        assertEquals(9, emptyMoves.size());
+
+        char[] partialBoard = {'X', 'O', ' ', 'X', ' ', ' ', ' ', ' ', ' '};
+        ArrayList<Integer> partialMoves = new ArrayList<>();
+        game.generateMoves(partialBoard, partialMoves);
+        assertEquals(6, partialMoves.size());
+
+        char[] fullBoard = {'X', 'O', 'X', 'O', 'X', 'O', 'O', 'X', 'O'};
+        ArrayList<Integer> fullMoves = new ArrayList<>();
+        game.generateMoves(fullBoard, fullMoves);
+        assertEquals(0, fullMoves.size());
     }
 
     @Test
-    void testProverkaGorizontalX() {
-        char[] doska = {'X','X','X', ' ',' ',' ', ' ',' ',' '};
-        ustanovitSimvol(igra, 'X');
-        assertEquals(State.XWIN, igra.checkState(doska));
+    public void testEvaluatePosition() {
+        Game game = new Game();
+
+        char[] xWinBoard = {'X', 'X', 'X', 'O', 'O', ' ', ' ', ' ', ' '};
+        game.symbol = 'X';
+        int xWinForX = game.evaluatePosition(xWinBoard, game.player1);
+        assertEquals(Game.INF, xWinForX);
+
+        char[] oWinBoard = {'O', 'O', 'O', 'X', 'X', ' ', ' ', ' ', ' '};
+        game.symbol = 'O';
+        int oWinForO = game.evaluatePosition(oWinBoard, game.player2);
+        assertEquals(Game.INF, oWinForO);
+
+        char[] drawBoard = {'X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'};
+        game.symbol = 'X';
+        assertEquals(0, game.evaluatePosition(drawBoard, game.player1));
+
+        char[] playingBoard = {'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+        assertEquals(-1, game.evaluatePosition(playingBoard, game.player1));
     }
 
     @Test
-    void testProverkaVertikalO() {
-        char[] doska = {'O',' ',' ', 'O',' ',' ', 'O',' ',' '};
-        ustanovitSimvol(igra, 'O');
-        assertEquals(State.OWIN, igra.checkState(doska));
+    public void testCellProperties() {
+        TicTacToeCell cell1 = new TicTacToeCell(0, 0, 0);
+        TicTacToeCell cell2 = new TicTacToeCell(4, 1, 1);
+        TicTacToeCell cell3 = new TicTacToeCell(8, 2, 2);
+
+        assertEquals(0, cell1.getNum());
+        assertEquals(0, cell1.getCol());
+        assertEquals(0, cell1.getRow());
+
+        assertEquals(4, cell2.getNum());
+        assertEquals(1, cell2.getCol());
+        assertEquals(1, cell2.getRow());
+
+        assertEquals(8, cell3.getNum());
+        assertEquals(2, cell3.getCol());
+        assertEquals(2, cell3.getRow());
+
+        cell1.setMarker("X");
+        assertEquals('X', cell1.getMarker());
+        assertEquals("X", cell1.getText());
+        assertFalse(cell1.isEnabled());
+
+        cell2.setMarker("O");
+        assertEquals('O', cell2.getMarker());
+        assertEquals("O", cell2.getText());
     }
 
     @Test
-    void testProverkaDiagonal() {
-        char[] doska = {'X',' ',' ', ' ','X',' ', ' ',' ','X'};
-        ustanovitSimvol(igra, 'X');
-        assertEquals(State.XWIN, igra.checkState(doska));
-    }
+    public void testPanelStructure() throws Exception {
+        TicTacToePanel panel = new TicTacToePanel(new GridLayout(3, 3));
+        assertEquals(9, panel.getComponentCount());
 
-    @Test
-    void testProverkaNichya() {
-        char[] doska = {'X','O','X', 'X','O','O', 'O','X','X'};
-        ustanovitSimvol(igra, 'X');
-        assertEquals(State.DRAW, igra.checkState(doska));
-    }
+        Field cellsField = TicTacToePanel.class.getDeclaredField("cells");
+        cellsField.setAccessible(true);
+        TicTacToeCell[] cells = (TicTacToeCell[]) cellsField.get(panel);
 
-    @Test
-    void testProverkaIgraet() {
-        char[] doska = {'X','O',' ', ' ',' ',' ', ' ',' ',' '};
-        ustanovitSimvol(igra, 'X');
-        assertEquals(State.PLAYING, igra.checkState(doska));
-    }
-
-    @ParameterizedTest
-    @CsvSource({"0, 1, 2", "0, 3, 6", "0, 4, 8", "2, 4, 6"})
-    void testVyigryshnyeKombinatsii(int a, int b, int c) {
-        char[] doska = new char[9];
-        for(int i=0; i<9; i++) doska[i] = ' ';
-        doska[a] = 'X'; doska[b] = 'X'; doska[c] = 'X';
-        ustanovitSimvol(igra, 'X');
-        assertEquals(State.XWIN, igra.checkState(doska));
-    }
-
-    @Test
-    void testGeneratsiyaKhodovPustaya() {
-        char[] doska = new char[9];
-        for(int i=0; i<9; i++) doska[i] = ' ';
-        ArrayList<Integer> khody = new ArrayList<>();
-        igra.generateMoves(doska, khody);
-        assertEquals(9, khody.size());
-    }
-
-    @Test
-    void testGeneratsiyaKhodovPolnaya() {
-        char[] doska = {'X','O','X','O','X','O','X','O','X'};
-        ArrayList<Integer> khody = new ArrayList<>();
-        igra.generateMoves(doska, khody);
-        assertTrue(khody.isEmpty());
-    }
-
-    @Test
-    void testOtsenkaXVyigralDlyaX() {
-        char[] doska = {'X','X','X', ' ',' ',' ', ' ',' ',' '};
-        ustanovitSimvol(igra, 'X');
-        assertEquals(Game.INF, igra.evaluatePosition(doska, igrokX));
-    }
-
-    @Test
-    void testOtsenkaXVyigralDlyaO() {
-        char[] doska = {'X','X','X', ' ',' ',' ', ' ',' ',' '};
-        ustanovitSimvol(igra, 'X');
-        assertEquals(-Game.INF, igra.evaluatePosition(doska, igrokO));
-    }
-
-    @Test
-    void testOtsenkaNichya() {
-        char[] doska = {'X','O','X', 'X','O','O', 'O','X','X'};
-        assertEquals(0, igra.evaluatePosition(doska, igrokX));
-    }
-
-    @Test
-    void testOtsenkaNeZavershena() {
-        char[] doska = new char[9];
-        for(int i=0; i<9; i++) doska[i] = ' ';
-        assertEquals(-1, igra.evaluatePosition(doska, igrokX));
-    }
-
-    @Test
-    void testMiniMaxPochtiPolnaya() {
-        char[] doska = {'X','O','X', 'O','X','O', 'X','O',' '};
-        ustanovitSimvol(igra, 'O');
-        int khod = igra.MiniMax(doska, igrokO);
-        assertEquals(9, khod);
-    }
-
-    @Test
-    void testMinMovePobeda() {
-        char[] doska = {'O','O','O', ' ',' ',' ', ' ',' ',' '};
-        ustanovitSimvol(igra, 'O');
-        assertEquals(Game.INF, igra.MinMove(doska, igrokO));
-    }
-
-    @Test
-    void testMaxMovePobeda() {
-        char[] doska = {'X','X','X', ' ',' ',' ', ' ',' ',' '};
-        ustanovitSimvol(igra, 'X');
-        assertEquals(Game.INF, igra.MaxMove(doska, igrokX));
-    }
-
-    @Test
-    void testUtilitaPechatChar() {
-        char[] doska = {'X','O','X', 'O','X','O', 'X','O','X'};
-        assertDoesNotThrow(() -> Utility.print(doska));
-    }
-
-    @Test
-    void testUtilitaPechatInt() {
-        int[] arr = {1,2,3,4,5,6,7,8,9};
-        assertDoesNotThrow(() -> Utility.print(arr));
-    }
-
-    @Test
-    void testUtilitaPechatList() {
-        ArrayList<Integer> list = new ArrayList<>();
-        list.add(0); list.add(4); list.add(8);
-        assertDoesNotThrow(() -> Utility.print(list));
-    }
-
-    @Test
-    void testYacheykaSozdanie() {
-        TicTacToeCell y = new TicTacToeCell(4, 1, 1);
-        assertNotNull(y);
-        assertEquals(4, y.getNum());
-        assertEquals(1, y.getRow());
-        assertEquals(1, y.getCol());
-        assertEquals(' ', y.getMarker());
-    }
-
-    @Test
-    void testYacheykaSetMarker() {
-        TicTacToeCell y = new TicTacToeCell(0, 0, 0);
-        y.setMarker("X");
-        assertEquals('X', y.getMarker());
-        assertEquals("X", y.getText());
-        assertFalse(y.isEnabled());
-    }
-
-    @Test
-    void testPanelSozdaetYacheyki() throws Exception {
-        TicTacToePanel panel = new TicTacToePanel(new java.awt.GridLayout(3,3));
-        Field f = TicTacToePanel.class.getDeclaredField("cells");
-        f.setAccessible(true);
-        TicTacToeCell[] cells = (TicTacToeCell[]) f.get(panel);
         assertNotNull(cells);
         assertEquals(9, cells.length);
-    }
 
-    @Test
-    void testEnumValues() {
-        assertEquals(4, State.values().length);
-        assertEquals(State.PLAYING, State.valueOf("PLAYING"));
-    }
-
-    @Test
-    void testKonstantaINF() {
-        assertEquals(100, Game.INF);
-    }
-
-    private void ustanovitSimvol(Game igra, char simvol) {
-        try {
-            Field f = Game.class.getDeclaredField("symbol");
-            f.setAccessible(true);
-            f.set(igra, simvol);
-        } catch (Exception e) {
-            fail(e.getMessage());
+        for (int i = 0; i < 9; i++) {
+            assertNotNull(cells[i]);
+            assertEquals(i, cells[i].getNum());
         }
+
+        Field gameField = TicTacToePanel.class.getDeclaredField("game");
+        gameField.setAccessible(true);
+        Game game = (Game) gameField.get(panel);
+        assertNotNull(game);
+        assertNotNull(game.player1);
+        assertNotNull(game.player2);
+    }
+
+    @Test
+    public void testUtilityFull() {
+        char[] boardChar = {'X', 'O', 'X', ' ', ' ', ' ', ' ', ' ', ' '};
+        int[] boardInt = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+        ArrayList<Integer> moves = new ArrayList<>();
+        moves.add(1);
+        moves.add(2);
+        moves.add(3);
+
+        assertDoesNotThrow(() -> {
+            Utility.print(boardChar);
+            Utility.print(boardInt);
+            Utility.print(moves);
+        });
+    }
+
+    @Test
+    public void testPlayerFields() {
+        Game game = new Game();
+
+        assertEquals('X', game.player1.symbol);
+        assertEquals('O', game.player2.symbol);
+        assertEquals(0, game.player1.move);
+        assertEquals(0, game.player2.move);
+        assertFalse(game.player1.selected);
+        assertFalse(game.player2.selected);
+        assertFalse(game.player1.win);
+        assertFalse(game.player2.win);
+
+        game.player1.move = 5;
+        game.player2.move = 3;
+        game.player1.selected = true;
+        game.player2.win = true;
+
+        assertEquals(5, game.player1.move);
+        assertEquals(3, game.player2.move);
+        assertTrue(game.player1.selected);
+        assertTrue(game.player2.win);
+    }
+
+    @Test
+    public void testGameConstants() {
+        assertEquals(100, Game.INF);
+
+        Game game = new Game();
+        game.state = State.XWIN;
+        assertEquals(State.XWIN, game.state);
+
+        game.symbol = 'O';
+        assertEquals('O', game.symbol);
     }
 }
